@@ -4,5 +4,5 @@ php:
   ports:
     - "8080:80"
   volumes:
-    - /var/www/html:/var/www/html
+    - /var/www:/var/www
     - ./public/000-default.conf:/etc/apache2/sites-available/000-default.conf
