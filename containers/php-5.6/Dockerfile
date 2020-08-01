@@ -4,12 +4,12 @@ LABEL key="Thiago Vieira <thiiagovieir@gmail.com>"
 
 RUN apt-get update
 RUN apt-get install -y php5 php5-cli php5-dev php-pear libxml2-dev
-RUN apt-get install -y libzip-dev git ruby-full build-essential re2c libaio1 unzip wget ca-certificates
+RUN apt-get install -y libzip-dev git build-essential re2c libaio1 unzip wget ca-certificates
 RUN rm -rf /var/lib/apt/lists/*
 
 # Install Packages
-#ADD ./public/install.sh /tmp/install.sh
-#RUN bash /tmp/install.sh
+ADD ./public/install.sh /tmp/install.sh
+RUN bash /tmp/install.sh
 
 # Install OCI8
 ADD ./oracle/oracle-instantclient11.2-basic-11.2.0.1.0-1.x86_64.zip /tmp/
