@@ -3,6 +3,7 @@ php:
   container_name: php5.6
   ports:
     - "9090:80"
+    - "9009:80"
   volumes:
     - /var/www:/var/www/html
 #    - ./public/000-default.conf:/etc/apache2/sites-available/000-default.conf

@@ -7,7 +7,7 @@ docker run \
     -v "$HOME":"$HOME":ro \
     -u $(id -u) \
     -w "$PWD" \
-    php7.4 \
+    php5.4 \
     php "$@"
 
 exit $?
