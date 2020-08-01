@@ -1,5 +1,5 @@
 php:
-  image: edurekain/php5.5apache
+  image: php5.6
   container_name: php5.6
   ports:
     - "9090:80"
