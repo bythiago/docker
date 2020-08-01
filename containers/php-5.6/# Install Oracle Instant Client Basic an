@@ -1,0 +1,25 @@
+# Install Oracle Instant Client Basic and SDK
+
+unzip instantclient-basic-linux.x64-12.2.0.1.0.zip -d /opt/oracle
+mv /opt/oracle/instantclient_11_2 /opt/oracle/instantclient/lib
+
+unzip oracle-instantclient11.2-sdk-11.2.0.1.0-1.x86_64.zip -d /opt/oracle
+mv /opt/oracle/instantclient_11_2/sdk/include /opt/oracle/instantclient/include
+
+ln -s /opt/oracle/instantclient/lib/libclntsh.so.11.1 /opt/oracle/instantclient/lib/libclntsh.so
+ln -s /opt/oracle/instantclient/lib/libocci.so.11.1 /opt/oracle/instantclient/lib/libocci.so
+
+echo /opt/oracle/instantclient/lib >> /etc/ld.so.conf
+ldconfig
+
+# Build and install PHP OCI8 extension
+
+pecl install oci8-2.0.12 #instantclient,/opt/oracle/instantclient/lib
+
+touch /etc/php5/mods-available/oci8.ini
+
+echo "; priority=20" >> /etc/php5/mods-available/oci8.ini
+echo "extension=pdo_oci.so" >> /etc/php5/mods-available/oci8.ini
+
+ln -s /etc/php5/mods-available/oci8.ini /etc/php5/cli/conf.d/20-oci8.ini
+ln -s /etc/php5/mods-available/oci8.ini /etc/php5/apache2/conf.d/20-oci8.ini
